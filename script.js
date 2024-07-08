@@ -55,6 +55,7 @@ function decrement(id) {
 }
 
 function imprimirArriendoFinal() {
+    const nombreCliente = document.getElementById("NombreCliente").value;
     let receiptContent = `
         <html>
         <head>
@@ -69,7 +70,7 @@ function imprimirArriendoFinal() {
             </style>
         </head>
         <body>
-            <h1>Recibo de Arriendo</h1>
+            <h1>Recibo de Arriendo para ${nombreCliente}</h1>
             <table>
                 <tr>
                     <th>Item</th>
@@ -79,6 +80,7 @@ function imprimirArriendoFinal() {
                 </tr>`;
 
     let total = 0;
+    
     const elements = document.querySelectorAll('.btn-group > input[type=number]');
     elements.forEach(element => {
         const cantidad = parseInt(element.value);
