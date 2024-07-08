@@ -54,9 +54,66 @@ function decrement(id) {
     }
 }
 
-function imprimirArriendoFinal(element) {
-    var nodosArriendo = [];
+function imprimirArriendoFinal() {
+    let receiptContent = `
+        <html>
+        <head>
+            <title>Recibo de Arriendo</title>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; }
+                h1 { color: #333; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .total { font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <h1>Recibo de Arriendo</h1>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>`;
 
+    let total = 0;
+    const elements = document.querySelectorAll('.btn-group > input[type=number]');
+    elements.forEach(element => {
+        const cantidad = parseInt(element.value);
+        if (cantidad > 0) {
+            const precioUnitario = preciosAlquiler[element.id];
+            const subtotal = cantidad * precioUnitario;
+            total += subtotal;
+            receiptContent += `
+                <tr>
+                    <td>${element.id}</td>
+                    <td>${cantidad}</td>
+                    <td>$${precioUnitario.toLocaleString()}</td>
+                    <td>$${subtotal.toLocaleString()}</td>
+                </tr>`;
+        }
+    });
+
+    receiptContent += `
+                <tr class="total">
+                    <td colspan="3">Total</td>
+                    <td>$${total.toLocaleString()}</td>
+                </tr>
+            </table>
+        </body>
+        </html>`;
+
+    const receiptWindow = window.open('', 'Recibo de Arriendo', 'width=600,height=600');
+    receiptWindow.document.write(receiptContent);
+    receiptWindow.document.close();
+    receiptWindow.focus();
+}
+
+const imprimirButton = document.getElementById('imprimirButton');
+if (imprimirButton) {
+    imprimirButton.addEventListener('click', imprimirArriendoFinal);
 }
 
 // event listeners para cada item
