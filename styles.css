@@ -1,0 +1,60 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    margin: 24px;
+    font-size: large; 
+    background-color: #0b4F6c;
+    color: white;
+    font-style: underline;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+.item {
+    margin-bottom: 6px;
+}
+
+/* Cuadro que se actualiza con el valor final del arriendo */
+.total {
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color:#051923;
+    border-radius: 12px;
+    width: 100%;
+}
+.btn-group {
+    display: flex;
+}
+/* Botones para disminuir y aumentar la cantidad de equipos en arriendo */
+.btn {
+    flex: 1;
+    height: 45px;
+    background-color: #96FF15;
+    font-size: x-large;
+    color: #051923;
+    font-weight: bold;
+    font-size: large;
+}
+#head-title {
+    background-color: #051923;
+    border-radius: 12px;
+    padding: 16px
+}
+.btn-group > input[type=number] {
+    border: none;
+    background-color: #051923;
+    height: 46px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+label {
+    background-color: #051923;
+    border-radius: 12px;
+    padding: 6px;
+}
+.logo {
+    display: block;
+    margin: 0 auto 20px
+}

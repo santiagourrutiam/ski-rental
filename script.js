@@ -54,6 +54,8 @@ function decrement(id) {
     }
 }
 
+
+//Código que crea la nueva página de impresión con el ticket final de arriendo.
 function imprimirArriendoFinal() {
     const nombreCliente = document.getElementById("NombreCliente").value;
     let receiptContent = `
@@ -70,7 +72,7 @@ function imprimirArriendoFinal() {
             </style>
         </head>
         <body>
-            <h1>Recibo de Arriendo para ${nombreCliente}</h1>
+            <h1>Recibo de Arriendo para <br> ${nombreCliente}</h1>
             <table>
                 <tr>
                     <th>Item</th>
@@ -104,6 +106,9 @@ function imprimirArriendoFinal() {
                     <td>$${total.toLocaleString()}</td>
                 </tr>
             </table>
+            
+            <h2> Gracias por Elegirnos, vuelve pronto!</h2>
+            
         </body>
         </html>`;
 
@@ -118,12 +123,13 @@ if (imprimirButton) {
     imprimirButton.addEventListener('click', imprimirArriendoFinal);
 }
 
+
 // event listeners para cada item
 document.addEventListener('DOMContentLoaded', () => {
     for (let item in preciosAlquiler) {
         const element = document.getElementById(item);
         if (element) {
-            element.addEventListener('input', calcularTotalArriendo);
+            element.addEventListener('input', calcularTotalArriendo, printPage);
         }
     }
 });
